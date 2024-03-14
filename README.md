@@ -1,5 +1,5 @@
 # synchronization-library
-A basic implementation of a synchronization library for the C programming language
+A basic implementation of a synchronization library for the C programming language.
 
 ## Table of contents
 -[Pre-requisites](#pre-requisites)
@@ -11,9 +11,9 @@ A basic implementation of a synchronization library for the C programming langua
 -[Examples](#examples)
 
 ## Pre-requisites
-- Linux Operating System
-- GCC compiler
-- Make tool
+- Linux Operating System - Conformance with POSIX.
+- GCC compiler installed in your distro.
+- Make tool installed in your distro.
 
 ## Installation
 

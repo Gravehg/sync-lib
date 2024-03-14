@@ -11,7 +11,7 @@ A basic implementation of a synchronization library for the C programming langua
 -[Examples](#examples)
 
 ## Pre-requisites
-- Linux Operating System - Conformance with POSIX.
+- Linux Operating System - In conformance with POSIX.
 - GCC compiler installed in your distro.
 - Make tool installed in your distro.
 

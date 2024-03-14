@@ -1,9 +1,9 @@
 # synchronization-library
 A basic implementation of a synchronization library for the C programming language
 
-##Table of contents
+## Table of contents
 
-##Pre-requisites
+## Pre-requisites
 - Linux Operating System
 - GCC compiler
 - Make tool

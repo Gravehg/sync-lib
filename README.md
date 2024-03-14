@@ -3,8 +3,11 @@ A basic implementation of a synchronization library for the C programming langua
 
 ## Table of contents
 -[Pre-requisites](#pre-requisites)
+
 -[Installation](#installation)
+
 -[Usage](#usage)
+
 -[Examples](#examples)
 
 ## Pre-requisites

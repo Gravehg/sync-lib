@@ -18,5 +18,11 @@ A basic implementation of a synchronization library for the C programming langua
 ## Installation
 
 ## Usage
+The **semaphore** synchronization primitve allows for the synchronization of threads on crytical
+sections of the code, it allows threads to **acquire** and **release** a resource.
+
+The **barrier** synchronization primitive allows threads to synchronize at an specific point
+and continue their execution **once** every thread reaches a certain point.  
+
 
 ## Examples

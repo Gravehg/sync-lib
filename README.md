@@ -29,8 +29,11 @@ and continue their execution **once** every thread reaches a certain point.
 
 ### Running the test file for the semaphore
 Try running it by issuing **./testsemaphore** on your terminal
+
 ![alt text](image.png)
 
 ### Running the test file for barrier
+
 Try running it by issuing **./testbarrier** on your terminal
+
 ![alt text](image-1.png)

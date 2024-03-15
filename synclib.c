@@ -51,3 +51,27 @@ void semaphore_destroy(semaphore *sem){
     pthread_mutex_destroy(&(sem->mutex));
     pthread_cond_destroy(&(sem->cond));
 }
+
+void monitor_init(Monitor *mon) {
+    pthread_mutex_init(&mon->mutex, NULL);
+    pthread_cond_init(&mon->condition, NULL);
+    mon->data = 0;
+}
+
+void monitor_modify_data(Monitor *mon, int new_data) {
+    pthread_mutex_lock(&mon->mutex);
+    mon->data = new_data;
+    pthread_cond_signal(&mon->condition);
+    pthread_mutex_unlock(&mon->mutex);
+}
+
+int monitor_read_data(Monitor *mon) {
+    int result;
+    pthread_mutex_lock(&mon->mutex);
+    while (mon->data == 0) {
+        pthread_cond_wait(&mon->condition, &mon->mutex);
+    }
+    result = mon->data;
+    pthread_mutex_unlock(&mon->mutex);
+    return result;
+}

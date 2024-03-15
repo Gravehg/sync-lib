@@ -67,19 +67,24 @@ The paths where the linker searches for the library will appear there, choose on
 The **semaphore** synchronization primitve allows for the synchronization of threads on crytical
 sections of the code, it allows threads to **acquire** and **release** a resource.
 
-Use *void semaphore_init(semaphore *sem, int initial_value)* to initialize a semaphore.
-Use **void semaphore_acquire(semaphore *sem)** to wait.
-Use **semaphore_release(semaphore *sem)** to notify.
-Use **semaphore_destroy(semaphore *sem)** to destroy the semaphore.
+Use semaphore_init(semaphore *sem, int initial_value) to initialize a semaphore.
+
+Use semaphore_acquire(semaphore *sem) to wait.
+
+Use semaphore_release(semaphore *sem) to notify.
+
+Use semaphore_destroy(semaphore *sem) to destroy the semaphore.
 
 An example usage for semaphores is included in the **testsemaphore.c** file
 
 The **barrier** synchronization primitive allows threads to synchronize at an specific point
 and continue their execution **once** every thread reaches a certain point.  
 
-Use **barrier_init(barrier *b, int count)** to initialize a barrier.
-Use **barrier_wait(barrier *b)** to synchronize threads at an specifi point.
-Use **barrier_destroy(barrier *b)** to destroy the barrier.
+Use barrier_init(barrier *b, int count) to initialize a barrier.
+
+Use barrier_wait(barrier *b) to synchronize threads at an specifi point.
+
+Use barrier_destroy(barrier *b) to destroy the barrier.
 
 An example usage for barriers is included in the **testbarriersync.c** file
 

@@ -67,7 +67,7 @@ The paths where the linker searches for the library will appear there, choose on
 The **semaphore** synchronization primitve allows for the synchronization of threads on crytical
 sections of the code, it allows threads to **acquire** and **release** a resource.
 
-Use **void semaphore_init(semaphore *sem, int initial_value)** to initialize a semaphore.
+Use *void semaphore_init(semaphore *sem, int initial_value)* to initialize a semaphore.
 Use **void semaphore_acquire(semaphore *sem)** to wait.
 Use **semaphore_release(semaphore *sem)** to notify.
 Use **semaphore_destroy(semaphore *sem)** to destroy the semaphore.

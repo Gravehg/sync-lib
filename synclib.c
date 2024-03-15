@@ -1,16 +1,19 @@
 #include <stdlib.h>
 #include "synclib.h"
 
+
 void barrier_init(barrier *b, int count) {
   b->count = count;
   pthread_mutex_init(&(b->mutex), NULL);
   pthread_cond_init(&(b->cond), NULL);
 }
 
+
 void barrier_destroy(barrier *b) {
   pthread_mutex_destroy(&(b->mutex));
   pthread_cond_destroy(&(b->cond));
 }
+
 
 void barrier_wait(barrier *b) {
   pthread_mutex_lock(&(b->mutex));

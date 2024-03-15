@@ -22,10 +22,10 @@ void barrier_wait(barrier *b) {
   pthread_mutex_unlock(&(b->mutex));
 }
 
-void semaphore_init(semaphore *sem, int n) {
+void semaphore_init(semaphore *sem, int initial_value) {
   pthread_mutex_init(&(sem->mutex), NULL);
   pthread_cond_init(&(sem->cond), NULL);
-  sem->n = n;
+  sem->n = initial_value;
 }
 
 void semaphore_acquire(semaphore *sem) {
@@ -42,4 +42,9 @@ void semaphore_release(semaphore *sem) {
   sem->n++;
   pthread_cond_signal(&(sem->cond));
   pthread_mutex_unlock(&(sem->mutex));
+}
+
+void semaphore_destroy(semaphore *sem){
+    pthread_mutex_destroy(&(sem->mutex));
+    pthread_cond_destroy(&(sem->cond));
 }

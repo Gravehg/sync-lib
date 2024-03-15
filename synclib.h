@@ -25,5 +25,6 @@ void barrier_wait(barrier *b);
 void semaphore_init(semaphore *sem, int n);
 void semaphore_acquire(semaphore *sem);
 void semaphore_release(semaphore *sem);
+void semaphore_destroy(semaphore *sem);
 
 #endif

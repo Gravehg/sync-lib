@@ -26,3 +26,5 @@ and continue their execution **once** every thread reaches a certain point.
 
 
 ## Examples
+### Running the test file for barrier
+![alt text](image-1.png)

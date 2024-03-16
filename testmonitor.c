@@ -7,6 +7,8 @@
 Monitor mon;
 
 void *testMonitor();
+void doSomething();
+int testing = 0;
 
 int main(){
     int nthreads = 4;
@@ -27,20 +29,12 @@ int main(){
 }
 
 void *testMonitor(){
+    printf("Blocking thread with monitor\n");
     monitor_enter(&mon);
     printf("Thread %ld entered. \n", pthread_self());   
-    
-    sleep(2);//simulate some work
-        
-    monitor_wait(&mon);
-    printf("Thread %ld woke up.\n", pthread_self());
-
-    monitor_signal(&mon);
-    printf("Thread %ld signaled. \n", pthread_self());
-
+    sleep(2);
+    printf("Unblocking thread with monitor\n");
     monitor_exit(&mon);
     printf("Thread %ld exited. \n", pthread_self());
-
     return NULL;
-    
 }

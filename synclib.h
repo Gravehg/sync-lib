@@ -21,7 +21,6 @@ typedef struct {
 typedef struct {
     pthread_mutex_t mutex;
     pthread_cond_t condition;
-    int data;
 } Monitor;
 
 
@@ -38,7 +37,11 @@ void semaphore_destroy(semaphore *sem);
 
 //Monitor API calls
 void monitor_init(Monitor *mon);
-void monitor_modify_data(Monitor *mon, int new_data);
-int monitor_read_data(Monitor *mon);
+void monitor_wait(Monitor *mon);
+void monitor_signal(Monitor *mon);
+void monitor_enter(Monitor *mon);
+void monitor_exit(Monitor *mon);
+void monitor_destroy(Monitor *mon);
+
 
 #endif

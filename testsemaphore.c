@@ -28,7 +28,7 @@ int main(){
 }
 
 void *test_semaphore(){
-printf("Thread %ld attempting to acquire semaphore\n", pthread_self());
+  printf("Thread %ld attempting to acquire semaphore\n", pthread_self());
   semaphore_acquire(&sem);
   printf("Thread %ld acquired semaphore\n", pthread_self());
   sleep(2); // simulate some work

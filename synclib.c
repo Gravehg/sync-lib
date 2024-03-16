@@ -18,7 +18,7 @@ void barrier_destroy(barrier *b) {
 void barrier_wait(barrier *b) {
   pthread_mutex_lock(&(b->mutex));
   b->count--;
-  while (b->count > 0) {
+  if (b->count > 0) {
     pthread_cond_wait(&(b->cond), &(b->mutex));
   }
   pthread_cond_broadcast(&(b->cond));
@@ -33,7 +33,7 @@ void semaphore_init(semaphore *sem, int initial_value) {
 
 void semaphore_acquire(semaphore *sem) {
   pthread_mutex_lock(&(sem->mutex));
-  while (sem->n <= 0) {
+  if (sem->n <= 0) {
     pthread_cond_wait(&(sem->cond), &(sem->mutex));
   }
   sem->n--;
@@ -53,25 +53,28 @@ void semaphore_destroy(semaphore *sem){
 }
 
 void monitor_init(Monitor *mon) {
-    pthread_mutex_init(&mon->mutex, NULL);
-    pthread_cond_init(&mon->condition, NULL);
-    mon->data = 0;
+    pthread_mutex_init(&(mon->mutex), NULL);
+    pthread_cond_init(&(mon->condition), NULL);
 }
 
-void monitor_modify_data(Monitor *mon, int new_data) {
-    pthread_mutex_lock(&mon->mutex);
-    mon->data = new_data;
-    pthread_cond_signal(&mon->condition);
-    pthread_mutex_unlock(&mon->mutex);
+void monitor_enter(Monitor *mon){
+  pthread_mutex_lock(&(mon->mutex));
 }
 
-int monitor_read_data(Monitor *mon) {
-    int result;
-    pthread_mutex_lock(&mon->mutex);
-    while (mon->data == 0) {
-        pthread_cond_wait(&mon->condition, &mon->mutex);
-    }
-    result = mon->data;
-    pthread_mutex_unlock(&mon->mutex);
-    return result;
+void monitor_exit(Monitor *mon){
+  pthread_mutex_unlock(&(mon->mutex));
 }
+
+void monitor_wait(Monitor *mon){
+  pthread_cond_wait(&(mon->condition),&(mon->mutex));
+}
+
+void monitor_signal(Monitor *mon){
+  pthread_cond_signal(&(mon->condition));
+}
+
+void monitor_destroy(Monitor *mon){
+  pthread_mutex_destroy(&(mon->mutex));
+  pthread_cond_destroy(&(mon->condition));
+}
+

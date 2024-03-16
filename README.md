@@ -90,6 +90,21 @@ An example usage for barriers is included in the **testbarriersync.c** file
 
 All the structures are defined in the **synclib.h** file if you want to check their contents.
 
+The **monitor** synchronization primitive allows for an abstraction of the operations of threads over functions,
+it can wait, signal, block or unblock a thread.
+
+Use monitor_init(Monitor *mon) to initialize a monitor
+
+Use monitor_wait(Monitor *mon) so that the thread waits
+
+Use monitor_signal(Monitor *mon) to signal the thread that it can continue
+
+Use monitor_enter(Monitor *mon) to block the thread
+
+Use monitor_exit(Monitor *mon) to un-block the thread
+
+Use monitor_destroy(Monitor *mon) to destroy the monitor
+
 
 ## Examples
 
@@ -102,6 +117,10 @@ Try running it by issuing **./testsemaphore** on your terminal
 
 Try running it by issuing **./testbarrier** on your terminal
 
+### Running the test file for monitor
+
+Try running it by issuing **./testmonitor** on your terminal
+
 ![alt text](image-1.png)
 
 There are also tests with the DLL way, but you first need to follow the steps in [The DLL way](#the-dll-way)
@@ -109,8 +128,10 @@ If you follow the instructions you can issue the commands to test it:
 
 - make testbarrierDLL
 - make testsemaphoreDLL
+- make testmonitorDLL
 - ./testsemaphoredll
 - ./testbarrierdll
+- ./testmonitordll
 
 If you want to clear all tests:
 
